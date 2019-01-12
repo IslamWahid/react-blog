@@ -42,10 +42,7 @@ export default class Signup extends Component {
         username
       });
       if (status !== 201) throw new Error('error creating user');
-      localStorage.setItem('user', JSON.stringify(user));
-      this.props.userHasAuthenticated(true);
-      this.setState({ isLoading: false });
-      this.props.history.push('/');
+      this.props.userHasAuthenticated(user);
     } catch (e) {
       alert(e.message);
       this.setState({ isLoading: false });

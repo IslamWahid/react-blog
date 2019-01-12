@@ -31,11 +31,12 @@ export default class NewPost extends Component {
     this.setState({ isLoading: true });
     const { title, body } = this.state;
     try {
-      const { id: userId } = JSON.parse(localStorage.getItem('user'));
+      const { id: userId } = this.props.user;
       await axios.post('/posts', {
         title,
         body,
         userId,
+        comments: [],
         createdAt: Date.now()
       });
       this.setState({ isLoading: false });
@@ -47,7 +48,6 @@ export default class NewPost extends Component {
   };
 
   render() {
-    console.log('NewPost isAuthenticated', this.props.isAuthenticated);
     return (
       <div className="NewPost">
         <form onSubmit={this.handleSubmit}>

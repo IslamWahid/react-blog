@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { PageHeader, ListGroup, ListGroupItem, Badge } from 'react-bootstrap';
+import {
+  PageHeader,
+  Button,
+  PanelGroup,
+  Panel,
+  ListGroupItem
+} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './Home.css';
 
@@ -15,10 +21,9 @@ export default class Home extends Component {
   }
 
   async componentDidMount() {
-    console.log('Home isAuthenticated', this.props.isAuthenticated);
-
+    if (!this.props.isAuthenticated) return;
     try {
-      const { id: userId } = JSON.parse(localStorage.getItem('user'));
+      const { id: userId } = this.props.user;
       const { data: posts } = await axios.get(`/posts?userId=${userId}`);
       this.setState({
         posts: posts.sort((a, b) => b.createdAt - a.createdAt)
@@ -32,18 +37,31 @@ export default class Home extends Component {
 
   renderPostsList(posts) {
     return posts.map(post => (
-      <LinkContainer key={post.id} to={`/posts/${post.id}`}>
-        <ListGroupItem header={post.title}>
-          {`CreatedAt: ${new Date(post.createdAt).toLocaleString()}`}
-        </ListGroupItem>
-      </LinkContainer>
+      <Panel key={post.id} bsStyle="info">
+        <Panel.Heading>
+          <Panel.Title>
+            <b>{post.title}</b>
+          </Panel.Title>
+        </Panel.Heading>
+        <Panel.Body>
+          {post.body}
+          <hr />
+          <LinkContainer to={`/posts/${post.id}`}>
+            <Button bsStyle="link">show comments</Button>
+          </LinkContainer>
+        </Panel.Body>
+        <Panel.Footer>
+          {new Date(post.createdAt).toLocaleString()} &nbsp;&nbsp;
+          <b>{post.comments.length} comments</b> &nbsp;&nbsp;
+        </Panel.Footer>
+      </Panel>
     ));
   }
 
   renderLander() {
     return (
       <div className="lander">
-        <h1>Blog</h1>
+        <h1>Welcome to Blog</h1>
         <p>A simple blog app</p>
       </div>
     );
@@ -53,18 +71,19 @@ export default class Home extends Component {
     return (
       <div className="posts">
         <PageHeader>
-          Your Posts <Badge>{this.state.posts.length}</Badge>
+          Posts <small>({this.state.posts.length})</small>
         </PageHeader>
-        <ListGroup>
-          <LinkContainer key="new" to="/posts/new">
-            <ListGroupItem>
-              <h4>
-                <b>{'\uFF0B'}</b> Create a new post
-              </h4>
-            </ListGroupItem>
-          </LinkContainer>
+        <LinkContainer to="/posts/new">
+          <h4>
+            <Button bsStyle="link">
+              <b>{'\uFF0B'}</b> Create a new post
+            </Button>
+          </h4>
+        </LinkContainer>
+        <br />
+        <PanelGroup id="postsPanelGroup">
           {!this.state.isLoading && this.renderPostsList(this.state.posts)}
-        </ListGroup>
+        </PanelGroup>
       </div>
     );
   }

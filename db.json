@@ -5,44 +5,36 @@
       "body": "sdfsfdf",
       "userId": 1,
       "createdAt": 1547318251777,
-      "id": 1
-    },
-    {
-      "title": "2",
-      "body": "sf",
-      "userId": 1,
-      "createdAt": 1547320596036,
-      "id": 2
-    },
-    {
-      "title": "3",
-      "body": "sdfasf",
-      "userId": 1,
-      "createdAt": 1547320617184,
-      "id": 3
-    },
-    {
-      "title": "sdf",
-      "body": "sdfsd",
-      "userId": 1,
-      "createdAt": 1547320954006,
-      "id": 4
-    },
-    {
-      "title": "222",
-      "body": "fs",
-      "userId": 1,
-      "createdAt": 1547320960007,
-      "id": 5
-    }
-  ],
-  "comments": [
-    {
-      "postId": 1,
       "id": 1,
-      "name": "id labore ex et quam laborum",
-      "email": "Eliseo@gardner.biz",
-      "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+      "comments": [
+        {
+          "id": 1,
+          "author": {
+            "name": "isalm wahid",
+            "email": "islam.Wahid@outlook.com"
+          },
+          "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
+          "createdAt": 1547318251777
+        },
+        {
+          "id": 3,
+          "author": {
+            "name": "isalm wahid",
+            "email": "islam.Wahid@outlook.com"
+          },
+          "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
+          "createdAt": 1547318251777
+        },
+        {
+          "id": 2,
+          "author": {
+            "name": "isalm wahid",
+            "email": "islam.Wahid@outlook.com"
+          },
+          "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
+          "createdAt": 1547318251777
+        }
+      ]
     }
   ],
   "users": [
@@ -51,6 +43,12 @@
       "name": "isalm wahid",
       "username": "islam",
       "id": 1
+    },
+    {
+      "email": "islam.Wahid@outlook.com",
+      "name": "test",
+      "username": "test",
+      "id": 2
     }
   ]
 }

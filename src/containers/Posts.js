@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
+import { Panel, PanelGroup } from 'react-bootstrap';
 import axios from 'axios';
 import './Posts.css';
 
@@ -9,10 +9,7 @@ export default class Posts extends Component {
 
     this.state = {
       isLoading: null,
-      isDeleting: null,
-      post: null,
-      title: '',
-      body: ''
+      post: null
     };
   }
 
@@ -21,12 +18,9 @@ export default class Posts extends Component {
       const { data: post } = await axios.get(
         `/posts/${this.props.match.params.id}`
       );
-      const { title, body } = post;
 
       this.setState({
-        post,
-        title,
-        body
+        post
       });
     } catch (e) {
       alert(e);
@@ -49,32 +43,48 @@ export default class Posts extends Component {
     this.setState({ isLoading: true });
   };
 
-  handleDelete = async event => {
-    event.preventDefault();
-
-    const confirmed = window.confirm(
-      'Are you sure you want to delete this post?'
-    );
-
-    if (!confirmed) {
-      return;
-    }
-
-    this.setState({ isDeleting: true });
+  renderComments = () => {
+    return this.state.post.comments.map((comment, i) => (
+      <Panel key={i}>
+        <Panel.Heading>
+          Author: &nbsp;&nbsp;
+          <b>
+            {comment.author.name} &nbsp;&nbsp;
+            {comment.author.email}
+          </b>
+        </Panel.Heading>
+        <Panel.Body>{comment.body}</Panel.Body>
+        <Panel.Footer>
+          {new Date(comment.createdAt).toLocaleString()} &nbsp;&nbsp;
+        </Panel.Footer>
+      </Panel>
+    ));
   };
 
   render() {
     return (
-      <div className="Posts">
-        {this.state.post && (
-          <Panel>
+      this.state.post && (
+        <div className="Posts">
+          <Panel bsStyle="info">
             <Panel.Heading>
-              <Panel.Title componentClass="h3">{this.state.title}</Panel.Title>
+              <Panel.Title>
+                <b>{this.state.post.title}</b>
+              </Panel.Title>
             </Panel.Heading>
-            <Panel.Body>{this.state.body}</Panel.Body>
+            <Panel.Body>{this.state.post.body}</Panel.Body>
+            <Panel.Footer>
+              {new Date(this.state.post.createdAt).toLocaleString()}{' '}
+              &nbsp;&nbsp;
+              <b>{this.state.post.comments.length} comments</b> &nbsp;&nbsp;
+            </Panel.Footer>
           </Panel>
-        )}
-      </div>
+          <hr />
+          <h3>Comments</h3>
+          <PanelGroup id="commentsPanelGroup">
+            {this.renderComments()}
+          </PanelGroup>
+        </div>
+      )
     );
   }
 }

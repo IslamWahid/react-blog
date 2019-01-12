@@ -28,17 +28,14 @@ export default class Login extends Component {
     event.preventDefault();
     this.setState({ isLoading: true });
     try {
-      const { data } = await axios.get(
-        `/users?username=${this.state.username}`
-      );
-      const user = data[0];
+      const {
+        data: [user]
+      } = await axios.get(`/users?username=${this.state.username}`);
       if (!user) throw new Error('username not found');
-      localStorage.setItem('user', JSON.stringify(user));
-      this.props.userHasAuthenticated(true);
-      this.props.history.push('/');
+      this.props.userHasAuthenticated(user);
     } catch (e) {
-      alert(e.message);
       this.setState({ isLoading: false });
+      alert(e.message);
     }
   };
 

@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {
-  PageHeader,
-  Button,
-  PanelGroup,
-  Panel,
-  ListGroupItem
-} from 'react-bootstrap';
+import { PageHeader, Button, PanelGroup, Panel } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './Home.css';
 

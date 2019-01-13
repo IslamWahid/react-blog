@@ -1,8 +1,8 @@
 {
   "posts": [
     {
-      "title": "title",
-      "body": "sdfsfdf",
+      "title": "welcome",
+      "body": "Welcome to the company blog",
       "userId": 1,
       "createdAt": 1547318251777,
       "id": 1,
@@ -14,7 +14,7 @@
             "email": "islam.Wahid@outlook.com"
           },
           "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
-          "createdAt": 1547318251777
+          "createdAt": 1547318251788
         },
         {
           "id": 3,
@@ -23,16 +23,7 @@
             "email": "islam.Wahid@outlook.com"
           },
           "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
-          "createdAt": 1547318251777
-        },
-        {
-          "id": 2,
-          "author": {
-            "name": "isalm wahid",
-            "email": "islam.Wahid@outlook.com"
-          },
-          "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
-          "createdAt": 1547318251777
+          "createdAt": 1547318251799
         }
       ]
     }

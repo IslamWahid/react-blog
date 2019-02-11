@@ -18,7 +18,9 @@ export default class Home extends Component {
     if (!this.props.isAuthenticated) return;
     try {
       const { id: userId } = this.props.user;
-      const { data: posts } = await axios.get(`/posts?userId=${userId}`);
+      const { data: posts } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/posts?userId=${userId}`
+      );
       this.setState({
         posts: posts.sort((a, b) => b.createdAt - a.createdAt)
       });

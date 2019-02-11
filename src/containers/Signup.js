@@ -36,11 +36,14 @@ export default class Signup extends Component {
     this.setState({ isLoading: true });
     const { email, name, username } = this.state;
     try {
-      const { status, data: user } = await axios.post('/users', {
-        email,
-        name,
-        username
-      });
+      const { status, data: user } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/users`,
+        {
+          email,
+          name,
+          username
+        }
+      );
       if (status !== 201) throw new Error('error creating user');
       this.props.userHasAuthenticated(user);
     } catch (e) {

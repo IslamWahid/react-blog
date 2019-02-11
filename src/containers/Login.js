@@ -30,7 +30,9 @@ export default class Login extends Component {
     try {
       const {
         data: [user]
-      } = await axios.get(`/users?username=${this.state.username}`);
+      } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users?username=${this.state.username}`
+      );
       if (!user) throw new Error('username not found');
       this.props.userHasAuthenticated(user);
     } catch (e) {

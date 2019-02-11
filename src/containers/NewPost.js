@@ -32,7 +32,7 @@ export default class NewPost extends Component {
     const { title, body } = this.state;
     try {
       const { id: userId } = this.props.user;
-      await axios.post('/posts', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/posts`, {
         title,
         body,
         userId,

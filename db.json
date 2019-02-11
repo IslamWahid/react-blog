@@ -10,7 +10,7 @@
         {
           "id": 1,
           "author": {
-            "name": "isalm wahid",
+            "name": "islam wahid",
             "email": "islam.Wahid@outlook.com"
           },
           "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
@@ -19,7 +19,7 @@
         {
           "id": 3,
           "author": {
-            "name": "isalm wahid",
+            "name": "islam wahid",
             "email": "islam.Wahid@outlook.com"
           },
           "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
@@ -31,15 +31,9 @@
   "users": [
     {
       "email": "islam.wahid@outlook.com",
-      "name": "isalm wahid",
+      "name": "Islam Wahid",
       "username": "islam",
       "id": 1
-    },
-    {
-      "email": "islam.Wahid@outlook.com",
-      "name": "test",
-      "username": "test",
-      "id": 2
     }
   ]
 }

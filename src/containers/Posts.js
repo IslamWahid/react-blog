@@ -16,7 +16,7 @@ export default class Posts extends Component {
   async componentDidMount() {
     try {
       const { data: post } = await axios.get(
-        `/posts/${this.props.match.params.id}`
+        `${process.env.REACT_APP_API_URL}/posts/${this.props.match.params.id}`
       );
 
       this.setState({
